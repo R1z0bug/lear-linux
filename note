@@ -1,0 +1,15 @@
+## CMD: Find
+Ngoài chức năng tìm kiếm tập tin và thư mục, công cụ này còn có chức năng lọc kết quả
+$ find <location> <options>
+Example: find / -type f -name *.conf -user root -size +20k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null
+
++  -type f: Xác định được đối tượng tìm kiếm. Trong trường hợp này, 'f' là viết tắt của 'file'
++  -name *.conf : Với '-name' xác định file.
++ -user root: Tuỳ chọn này lọc tất cả các tệp có chủ sở hữu là người dùng root.
++ -sze +20k: lọc các tệp đã xác định với kích thước lớn hơn 20KiB
++ -newermt 2020-03-03: Lọc theo ngày ở đây là các tệp mới hơn ngày 2020-03-03 sẽ được hiển thị.
++ -exec ls -al {} \; : thực thi lệnh shell. Dấu gạch chéo ngược giúp ký tự tiếp theo không bị shell giải thích vì nếu không, dấu chấm phẩy sẽ chấm dứt lệnh và không đến được chuyển hướng.
++ 2>/dev/nul: Đây là một STDERRchuyển hướng đến ' null device', mà chúng ta sẽ quay lại trong phần tiếp theo. Việc chuyển hướng này đảm bảo rằng không có lỗi nào được hiển thị trong thiết bị đầu cuối. 
+
+## File Descriptors
+File descriptor(FD) trong Unix/Linux là một chỉ báo về kết nối được duy trì bởi nhân để thử hiện các thao tác nhập/xuất(I/O).Trong các hệ diều hành dựa trên WIN, nó được gọi là filehandle. Đó là kết nối(thường là với một tệp) từ Hệ điều hành để thực hiện các thao tác I/O. 
